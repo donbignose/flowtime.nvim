@@ -1,0 +1,46 @@
+# Lua related files to ignore
+*.luac     # Compiled Lua files
+*.lua~     # Temporary files created by editors
+
+# LuaRocks related files to ignore
+lua_modules/    # Local LuaRocks installation directory
+.rocks/         # LuaRocks manifest files
+*.rockspec      # Rockspec files can be included or excluded based on preference
+
+# NeoVim related files to ignore
+session.vim
+
+# OS and Editor specific files to ignore
+.DS_Store       # macOS file system file
+Thumbs.db       # Windows file system file
+
+# Various IDEs and text editor directories to ignore
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# Node.js modules (if using Node.js in the project)
+node_modules/
+
+# Ignore build and output files
+/build/
+/dist/
+/out/
+
+# Ignore environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Other files and directories to consider ignoring
+/coverage/      # Test coverage directory
+npm-debug.log   # NPM debug log
+yarn-error.log  # Yarn error log
