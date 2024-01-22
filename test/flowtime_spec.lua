@@ -3,8 +3,14 @@ local assert = require('luassert')
 local flowtime = require('flowtime')
 
 describe('FlowTime plugin', function()
+  local original_os_time = os.time
+  local mock_time = original_os_time()
   before_each(function()
+    os.time = function()
+      return mock_time
+    end
     helper.cleanup() -- Reset NeoVim state
+    flowtime.reset()
     package.loaded['flowtime'] = nil -- Unload the module to reset its state
     flowtime = require('flowtime')
     -- Mock vim.fn.input to simulate user input
@@ -12,49 +18,51 @@ describe('FlowTime plugin', function()
       return 'n'
     end -- Default to 'n' for simplicity
   end)
+  after_each(function()
+    os.time = original_os_time
+    mock_time = original_os_time()
+  end)
 
   describe('start_flowtime', function()
     it('should start the work timer', function()
       flowtime.start_flowtime()
-      print(flowtime.start_time)
-      assert.is_not_nil(flowtime.start_time)
+      assert.is_not_nil(flowtime.get_start_time())
     end)
 
     it('should not restart the timer if already running', function()
       flowtime.start_flowtime()
-      local first_start_time = flowtime.start_time
+      local first_start_time = flowtime.get_start_time()
+      mock_time = mock_time + 120
       flowtime.start_flowtime()
-      print(flowtime.start_time)
-      print(first_start_time)
-      assert.are.equal(first_start_time, flowtime.start_time)
+      assert.are.equal(first_start_time, flowtime.get_start_time())
     end)
   end)
 
   describe('stop_flowtime', function()
     it('should stop the work timer and calculate durations', function()
       flowtime.start_flowtime()
-      helper.wait(2000) -- Simulate 2 seconds
+      mock_time = mock_time + 120
       flowtime.stop_flowtime()
-      assert.is_true(flowtime.work_duration >= 2)
-      assert.is_true(flowtime.break_duration >= 0.4)
+      assert.is_true(flowtime.get_work_duration() >= 120)
+      assert.is_true(flowtime.get_break_duration() >= 24)
     end)
   end)
 
   describe('start_break', function()
     it('should start the break timer', function()
       flowtime.start_flowtime()
-      helper.wait(2000) -- Simulate 2 seconds
+      mock_time = mock_time + 120
       flowtime.start_break()
-      assert.is_not_nil(flowtime.break_timer)
+      assert.is_not_nil(flowtime.get_break_timer())
     end)
 
     it('should handle existing break timer', function()
       flowtime.start_flowtime()
-      helper.wait(2000) -- Simulate 2 seconds
+      mock_time = mock_time + 120
       flowtime.start_break()
-      local first_break_timer = flowtime.break_timer
+      local first_break_timer = flowtime.get_break_timer()
       flowtime.start_break() -- Try to start break again
-      assert.are.equal(first_break_timer, flowtime.break_timer)
+      assert.are.equal(first_break_timer, flowtime.get_break_timer())
     end)
   end)
 
