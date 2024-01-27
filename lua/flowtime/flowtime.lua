@@ -1,6 +1,8 @@
+log = require('flowtime.log')
 local M = {}
 
 local start_time = nil
+local break_time = nil
 local break_timer = nil
 local work_duration = nil
 local break_duration = nil
@@ -30,57 +32,57 @@ end
 function M.start_flowtime()
   if start_time then
     local current_work_duration = M.current_work_duration()
-    print(
-      string.format('Flowtime: Timer already running ', format_time(current_work_duration), '\n')
-    )
+    log.error('Timer already running ' .. format_time(current_work_duration))
     return
   end
   start_time = os.time()
-  print('Flowtime: Work timer started\n')
+  log.info('Work timer started')
 end
 
 function M.stop_flowtime()
   if not start_time then
-    print('Flowtime: Work timer not running')
+    log.error('No Work timer running')
     return
   end
-  local end_time = os.time()
-  work_duration = end_time - start_time
-  print(string.format('Flowtime: Work timer stopped after ', format_time(work_duration)))
+  break_time = os.time()
+  work_duration = break_time - start_time
+  log.info('Work timer stopped after ' .. format_time(work_duration))
   start_time = nil
   break_duration = work_duration / 5
 end
 
 function M.current_work_duration()
   if not start_time then
-    print('Flowtime: Work timer not running')
+    log.error('No Work timer  running')
     return 0
   end
   return os.time() - start_time
 end
 
 function M.start_break()
-  M.stop_flowtime()
   if break_timer then
-    local remaining_ms = vim.fn.timer_info(break_timer)[1].remaining
-    local remaining_seconds = remaining_ms / 1000
-    print(
-      string.format(
-        'FlowTime: Break is already running. Time remaining: ',
-        format_time(remaining_seconds)
-      )
-    )
+    log.error('Break is already running. Time remaining: ' .. format_time(M.remaining_break()))
     return
   end
-  break_timer = vim.fn.timer_start(break_duration * 1000, function()
-    vim.cmd('echo "FlowTime: Break time is over."')
-    local choice = vim.fn.input('Do you want to continue working? (y/n): ')
-    if choice == 'y' or choice == 'Y' then
-      M.start_flowtime()
-    end
-    break_timer = nil
-  end)
-  print('Flowtime: Break started, chill for ', format_time(break_duration))
+  M.stop_flowtime()
+  if break_duration then
+    break_timer = vim.fn.timer_start(break_duration * 1000, function()
+      vim.cmd('echo "Break time is over."')
+      local choice = vim.fn.input('Do you want to continue working? (y/n): ')
+      if choice == 'y' or choice == 'Y' then
+        M.start_flowtime()
+      end
+      break_timer = nil
+      break_time = nil
+      break_duration = nil
+    end)
+    log.info('Break started, chill for ' .. format_time(break_duration))
+  end
+end
+
+function M.remaining_break()
+  local elasped_break_time = os.time() - break_time
+  return break_duration - elasped_break_time
 end
 
 function M.reset()
@@ -88,6 +90,7 @@ function M.reset()
   work_duration = nil
   break_duration = nil
   break_timer = nil
+  break_time = nil
 end
 
 return M

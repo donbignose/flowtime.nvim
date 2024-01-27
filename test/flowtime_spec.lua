@@ -9,14 +9,13 @@ describe('FlowTime plugin', function()
     os.time = function()
       return mock_time
     end
-    helper.cleanup() -- Reset NeoVim state
     flowtime.reset()
-    package.loaded['flowtime'] = nil -- Unload the module to reset its state
+    package.loaded['flowtime'] = nil
     flowtime = require('flowtime')
     -- Mock vim.fn.input to simulate user input
     vim.fn.input = function()
       return 'n'
-    end -- Default to 'n' for simplicity
+    end
   end)
   after_each(function()
     os.time = original_os_time
@@ -61,8 +60,12 @@ describe('FlowTime plugin', function()
       mock_time = mock_time + 120
       flowtime.start_break()
       local first_break_timer = flowtime.get_break_timer()
-      flowtime.start_break() -- Try to start break again
+      mock_time = mock_time + 5
+      flowtime.start_break()
       assert.are.equal(first_break_timer, flowtime.get_break_timer())
+    end)
+    it('start_break with no work time running', function()
+      flowtime.start_break()
     end)
   end)
 
