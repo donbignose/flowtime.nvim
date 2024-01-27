@@ -48,9 +48,9 @@ vim-plug <https://github.com/junegunn/vim-plug>:
 
 🚀 USAGE                      *flowtime-🕒-flowtime-for-neovim-🚀-usage*
 
-- :FlowTimeStart: Starts the work timer. 🟢
-- :FlowTimeStop: Stops the work timer and starts the break timer. 🔴
-- :FlowTimeStartBreak: Starts the break timer manually. 🌙
+- `:FlowTimeStart`: Starts the work timer. 🟢
+- `:FlowTimeStop`: Stops the work timer and starts the break timer. 🔴
+- `:FlowTimeStartBreak`: Starts the break timer manually. 🌙
 
 
 FORMAT                              *flowtime-🕒-flowtime-for-neovim-format*
