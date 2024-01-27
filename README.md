@@ -15,10 +15,15 @@ FlowTime is a NeoVim plugin implemented in Lua, designed to help you manage your
 
 ## 🛠 Installation
 
-Install FlowTime using your favorite package manager. For example, with [vim-plug](https://github.com/junegunn/vim-plug):
+Install FlowTime using your favorite package manager. For example, with lazy:
 
-```vim
-Plug 'your_username/flowtime.nvim'
+```lua
+{
+  "donbignose/flowtime.nvim",
+  config = function()
+    require("flowtime")
+  end,
+}
 ```
 
 ## 🚀 Usage
