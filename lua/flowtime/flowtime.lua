@@ -1,4 +1,4 @@
-log = require('flowtime.log')
+Log = require('flowtime.log')
 local M = {}
 
 local start_time = nil
@@ -32,28 +32,28 @@ end
 function M.start_flowtime()
   if start_time then
     local current_work_duration = M.current_work_duration()
-    log.error('Timer already running ' .. format_time(current_work_duration))
+    Log.error('Timer already running ' .. format_time(current_work_duration))
     return
   end
   start_time = os.time()
-  log.info('Work timer started')
+  Log.info('Work timer started')
 end
 
 function M.stop_flowtime()
   if not start_time then
-    log.error('No Work timer running')
+    Log.error('No Work timer running')
     return
   end
   break_time = os.time()
   work_duration = break_time - start_time
-  log.info('Work timer stopped after ' .. format_time(work_duration))
+  Log.info('Work timer stopped after ' .. format_time(work_duration))
   start_time = nil
   break_duration = work_duration / 5
 end
 
 function M.current_work_duration()
   if not start_time then
-    log.error('No Work timer  running')
+    Log.error('No Work timer  running')
     return 0
   end
   return os.time() - start_time
@@ -61,7 +61,7 @@ end
 
 function M.start_break()
   if break_timer then
-    log.error('Break is already running. Time remaining: ' .. format_time(M.remaining_break()))
+    Log.error('Break is already running. Time remaining: ' .. format_time(M.remaining_break()))
     return
   end
   M.stop_flowtime()
@@ -76,7 +76,7 @@ function M.start_break()
       break_time = nil
       break_duration = nil
     end)
-    log.info('Break started, chill for ' .. format_time(break_duration))
+    Log.info('Break started, chill for ' .. format_time(break_duration))
   end
 end
 
