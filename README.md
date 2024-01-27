@@ -23,9 +23,9 @@ Plug 'your_username/flowtime.nvim'
 
 ## 🚀 Usage
 
-- :FlowTimeStart: Starts the work timer. 🟢
-- :FlowTimeStop: Stops the work timer and starts the break timer. 🔴
-- :FlowTimeStartBreak: Starts the break timer manually. 🌙
+- `:FlowTimeStart`: Starts the work timer. 🟢
+- `:FlowTimeStop`: Stops the work timer and starts the break timer. 🔴
+- `:FlowTimeStartBreak`: Starts the break timer manually. 🌙
 
 ## Format
 
