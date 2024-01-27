@@ -3,39 +3,62 @@
 ==============================================================================
 Table of Contents                                 *flowtime-table-of-contents*
 
-1. nvim-plugin-template                        |flowtime-nvim-plugin-template|
-  - Usage                                |flowtime-nvim-plugin-template-usage|
-  - Format                              |flowtime-nvim-plugin-template-format|
-  - Test                                  |flowtime-nvim-plugin-template-test|
-  - Ci                                      |flowtime-nvim-plugin-template-ci|
-  - More                                  |flowtime-nvim-plugin-template-more|
-  - License MIT                    |flowtime-nvim-plugin-template-license-mit|
+1. 🕒 FlowTime for NeoVim                |flowtime-🕒-flowtime-for-neovim|
+  - 🌟 Features            |flowtime-🕒-flowtime-for-neovim-🌟-features|
+  - 🔧 Requirements    |flowtime-🕒-flowtime-for-neovim-🔧-requirements|
+  - 🛠 Installation    |flowtime-🕒-flowtime-for-neovim-🛠-installation|
+  - 🚀 Usage                  |flowtime-🕒-flowtime-for-neovim-🚀-usage|
+  - Format                          |flowtime-🕒-flowtime-for-neovim-format|
+  - Test                              |flowtime-🕒-flowtime-for-neovim-test|
+  - Ci                                  |flowtime-🕒-flowtime-for-neovim-ci|
+  - More                              |flowtime-🕒-flowtime-for-neovim-more|
+  - License                        |flowtime-🕒-flowtime-for-neovim-license|
 
 ==============================================================================
-1. nvim-plugin-template                        *flowtime-nvim-plugin-template*
+1. 🕒 FlowTime for NeoVim                *flowtime-🕒-flowtime-for-neovim*
 
-neovim plugin template integration test and doc publish
-
-
-USAGE                                    *flowtime-nvim-plugin-template-usage*
-
-1. click `use this template` button generate a repo on your github.
-2. clone your plugin repo.open terminal then cd plugin directory.
-3. run `python3 rename.py your-plugin-name` this will replace all `nvim-plugin-template` to your `pluing-name`.
-then it will prompt you input `y` or `n` to remove example codes in `init.lua` and
-`test/plugin_spec.lua`. if you are familiar this repo just input y. if you are first look at this
-template I suggest you look at them first. after these step the `rename.py` will also auto
-remove.
-
-now you have a clean plugin env. enjoy!
+FlowTime is a NeoVim plugin implemented in Lua, designed to help you manage
+your time effectively using the FlowTime/Flowmodoro technique. This approach
+encourages focused work sessions followed by structured breaks, boosting
+productivity and maintaining balance. 🚀
 
 
-FORMAT                                  *flowtime-nvim-plugin-template-format*
+🌟 FEATURES                *flowtime-🕒-flowtime-for-neovim-🌟-features*
+
+- 🕑 Start and stop work timers with simple commands.
+- ⏱ Automatically calculates break durations based on work sessions.
+- 🚨 Offers reminders to take breaks and the option to continue work sessions.
+- ⏳ Tracks work and break durations seamlessly.
+
+
+🔧 REQUIREMENTS        *flowtime-🕒-flowtime-for-neovim-🔧-requirements*
+
+- NeoVim (version 0.5 or later).
+
+
+🛠 INSTALLATION        *flowtime-🕒-flowtime-for-neovim-🛠-installation*
+
+Install FlowTime using your favorite package manager. For example, with
+vim-plug <https://github.com/junegunn/vim-plug>:
+
+>vim
+    Plug 'your_username/flowtime.nvim'
+<
+
+
+🚀 USAGE                      *flowtime-🕒-flowtime-for-neovim-🚀-usage*
+
+- :FlowTimeStart: Starts the work timer. 🟢
+- :FlowTimeStop: Stops the work timer and starts the break timer. 🔴
+- :FlowTimeStartBreak: Starts the break timer manually. 🌙
+
+
+FORMAT                              *flowtime-🕒-flowtime-for-neovim-format*
 
 format use `stylua` and provide `.stylua.toml`.
 
 
-TEST                                      *flowtime-nvim-plugin-template-test*
+TEST                                  *flowtime-🕒-flowtime-for-neovim-test*
 
 use vusted for test install by using `luarocks --lua-version=5.1 install
 vusted` then run `vusted test` for your test cases.
@@ -44,18 +67,20 @@ create test case in test folder file rule is `foo_spec.lua` with `_spec` more
 usage please check busted usage <https://lunarmodules.github.io/busted/>
 
 
-CI                                          *flowtime-nvim-plugin-template-ci*
+CI                                      *flowtime-🕒-flowtime-for-neovim-ci*
 
 Ci support auto generate doc from README and integration test and lint check by
 `stylua`.
 
 
-MORE                                      *flowtime-nvim-plugin-template-more*
+MORE                                  *flowtime-🕒-flowtime-for-neovim-more*
 
 Other usage you can look at my plugins
 
 
-LICENSE MIT                        *flowtime-nvim-plugin-template-license-mit*
+LICENSE                            *flowtime-🕒-flowtime-for-neovim-license*
+
+FlowTime is released under the MIT License.
 
 Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
