@@ -1,4 +1,4 @@
-*flowtime.txt*           For NVIM v0.8.0          Last change: 2024 January 27
+*flowtime.txt*           For NVIM v0.8.0          Last change: 2024 January 28
 
 ==============================================================================
 Table of Contents                                 *flowtime-table-of-contents*
@@ -55,6 +55,28 @@ Install FlowTime using your favorite package manager. For example, with lazy:
 - `:FlowTimeStart`: Starts the work timer. 🟢
 - `:FlowTimeStop`: Stops the work timer and starts the break timer. 🔴
 - `:FlowTimeStartBreak`: Starts the break timer manually. 🌙
+
+
+INTEGRATE WITH LUALINE ~
+
+To display the active timer in your statusline, add the following to your
+lualine configuration:
+
+>lua
+    "require'flowtime'.get_active_timer()"
+<
+
+For instance in lazy:
+
+>lua
+    return {
+      "nvim-lualine/lualine.nvim",
+      event = "VeryLazy",
+      opts = function(_, opts)
+        table.insert(opts.sections.lualine_x, "require'flowtime'.get_active_timer()")
+      end,
+    }
+<
 
 
 FORMAT                              *flowtime-🕒-flowtime-for-neovim-format*
