@@ -32,6 +32,26 @@ Install FlowTime using your favorite package manager. For example, with lazy:
 - `:FlowTimeStop`: Stops the work timer and starts the break timer. 🔴
 - `:FlowTimeStartBreak`: Starts the break timer manually. 🌙
 
+### Integrate with Lualine
+
+To display the active timer in your statusline, add the following to your lualine configuration:
+
+```lua
+"require'flowtime'.get_active_timer()"
+```
+
+For instance in lazy:
+
+```lua
+return {
+  "nvim-lualine/lualine.nvim",
+  event = "VeryLazy",
+  opts = function(_, opts)
+    table.insert(opts.sections.lualine_x, "require'flowtime'.get_active_timer()")
+  end,
+}
+```
+
 ## Format
 
 format use `stylua` and provide `.stylua.toml`.
