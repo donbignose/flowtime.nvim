@@ -85,6 +85,16 @@ function M.remaining_break()
   return break_duration - elasped_break_time
 end
 
+function M.get_active_timer()
+  if start_time then
+    return format_time(M.current_work_duration())
+  elseif break_time then
+    return format_time(M.remaining_break())
+  else
+    return
+  end
+end
+
 function M.reset()
   start_time = nil
   work_duration = nil
