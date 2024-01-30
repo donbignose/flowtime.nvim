@@ -29,8 +29,8 @@ Install Flowtime using your favorite package manager. For example, with lazy:
 ## 🚀 Usage
 
 - `:FlowtimeStart`: Starts the work timer. 🟢
-- `:FlowtimeBreak`: Stops the work timer and starts the break timer. 🔴
-- `:FlowtimeStop`: Starts the break timer manually. 🌙
+- `:FlowtimeBreak`: Stops the work timer and starts the break timer. 🌙
+- `:FlowtimeStop`: Stops the active timer. 🔴
 
 ### Integrate with Lualine
 
@@ -67,10 +67,6 @@ create test case in test folder file rule is `foo_spec.lua` with `_spec` more us
 ## Ci
 
 Ci support auto generate doc from README and integration test and lint check by `stylua`.
-
-## More
-
-Other usage you can look at my plugins
 
 ## License
 
