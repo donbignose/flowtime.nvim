@@ -1,6 +1,6 @@
-# 🕒 FlowTime for NeoVim
+# 🕒 Flowtime for NeoVim
 
-FlowTime is a NeoVim plugin implemented in Lua, designed to help you manage your time effectively using the FlowTime/Flowmodoro technique. This approach encourages focused work sessions followed by structured breaks, boosting productivity and maintaining balance. 🚀
+Flowtime is a NeoVim plugin implemented in Lua, designed to help you manage your time effectively using the FlowTime/Flowmodoro technique. This approach encourages focused work sessions followed by structured breaks, boosting productivity and maintaining balance. 🚀
 
 ## 🌟 Features
 
@@ -15,7 +15,7 @@ FlowTime is a NeoVim plugin implemented in Lua, designed to help you manage your
 
 ## 🛠 Installation
 
-Install FlowTime using your favorite package manager. For example, with lazy:
+Install Flowtime using your favorite package manager. For example, with lazy:
 
 ```lua
 {
@@ -28,9 +28,9 @@ Install FlowTime using your favorite package manager. For example, with lazy:
 
 ## 🚀 Usage
 
-- `:FlowTimeStart`: Starts the work timer. 🟢
-- `:FlowTimeStop`: Stops the work timer and starts the break timer. 🔴
-- `:FlowTimeStartBreak`: Starts the break timer manually. 🌙
+- `:FlowtimeStart`: Starts the work timer. 🟢
+- `:FlowtimeBreak`: Stops the work timer and starts the break timer. 🔴
+- `:FlowtimeStop`: Starts the break timer manually. 🌙
 
 ### Integrate with Lualine
 
@@ -74,4 +74,4 @@ Other usage you can look at my plugins
 
 ## License
 
-FlowTime is released under the MIT License.
+Flowtime is released under the MIT License.
