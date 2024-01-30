@@ -97,8 +97,11 @@ function M.reset()
   start_time = nil
   work_duration = nil
   break_duration = nil
-  break_timer = nil
   break_time = nil
+  if break_timer then
+    vim.fn.timer_stop(break_timer)
+    break_timer = nil
+  end
 end
 
 return M
