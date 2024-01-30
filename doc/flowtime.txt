@@ -11,7 +11,6 @@ Table of Contents                                 *flowtime-table-of-contents*
   - Format                          |flowtime-🕒-flowtime-for-neovim-format|
   - Test                              |flowtime-🕒-flowtime-for-neovim-test|
   - Ci                                  |flowtime-🕒-flowtime-for-neovim-ci|
-  - More                              |flowtime-🕒-flowtime-for-neovim-more|
   - License                        |flowtime-🕒-flowtime-for-neovim-license|
 
 ==============================================================================
@@ -53,8 +52,8 @@ Install Flowtime using your favorite package manager. For example, with lazy:
 🚀 USAGE                      *flowtime-🕒-flowtime-for-neovim-🚀-usage*
 
 - `:FlowtimeStart`: Starts the work timer. 🟢
-- `:FlowtimeBreak`: Stops the work timer and starts the break timer. 🔴
-- `:FlowtimeStop`: Starts the break timer manually. 🌙
+- `:FlowtimeBreak`: Stops the work timer and starts the break timer. 🌙
+- `:FlowtimeStop`: Stops the active timer. 🔴
 
 
 INTEGRATE WITH LUALINE ~
@@ -97,11 +96,6 @@ CI                                      *flowtime-🕒-flowtime-for-neovim-ci*
 
 Ci support auto generate doc from README and integration test and lint check by
 `stylua`.
-
-
-MORE                                  *flowtime-🕒-flowtime-for-neovim-more*
-
-Other usage you can look at my plugins
 
 
 LICENSE                            *flowtime-🕒-flowtime-for-neovim-license*
