@@ -72,8 +72,11 @@ function M.start_break()
       if choice == 'y' or choice == 'Y' then
         M.start_flowtime()
       end
-      M.reset()
+      break_time = nil
+      break_duration = nil
+      break_timer = nil
     end)
+    work_duration = nil
     Log.info('Break started, chill for ' .. format_time(break_duration))
   end
 end

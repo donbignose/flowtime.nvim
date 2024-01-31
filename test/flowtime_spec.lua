@@ -54,7 +54,7 @@ describe('FlowTime plugin', function()
       flowtime.start_flowtime()
       mock_time = mock_time + 120
       flowtime.start_break()
-      assert.is_not_nil(flowtime.get_work_duration())
+      assert.is_nil(flowtime.get_work_duration())
       assert.is_not_nil(flowtime.get_break_duration())
       assert.is_not_nil(flowtime.get_break_timer())
     end)
